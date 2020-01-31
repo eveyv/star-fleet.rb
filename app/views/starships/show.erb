@@ -1,0 +1,40 @@
+<h1><%= @ship.name %></h1>
+
+<div class="info">
+  <p> Class:  <%= @ship.ship_class %>  </p>
+  <p> Location:   <%= @ship.location %>   </p>
+</div>
+
+<% @crew.each do |member| %>
+<ul>
+  <p>First Name: <%= member.first_name %> </p>
+  <p>Last Name: <%= member.last_name %> </p>
+  <p>Specialty: <%= member.specialty %> </p>
+</ul>
+
+<% end  %>
+
+<br />
+<br />
+
+<h5>Add new crew for the <%= @ship.name  %> </h5>
+
+
+  <form action="/starships/<%=@ship.id%>" method="post">
+
+    <label for="first_name">First Name:
+      <input type="text" name="first_name" value="">
+    </label>
+
+    <label for="last_name">Last Name:
+      <input type="text" name="last_name">
+    </label>
+
+    <label for="specialty">Specialty:
+      <input type="text" name="specialty" value="">
+    </label>
+
+    <input type="hidden" name="ship_id" value="<%= @ship.id %>" />
+    <input type="submit" name="" value="Add Crew">
+
+  </form>
